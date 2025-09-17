@@ -75,7 +75,18 @@ public class HeightOfTree {
         return new Info(diam, ht);
     }
 
-
+ // kth level find in tree 
+    public static void kLevel(Node root, int k, int level) {
+        if (root == null) {
+            return;
+        }
+        if (level == k) {
+            System.out.print(root.data + " ");
+            return;
+        }
+        kLevel(root.left, k, level + 1);
+        kLevel(root.right, k, level + 1);
+    }
    
     public static void main(String[] args) {
         /*
@@ -92,11 +103,15 @@ public class HeightOfTree {
         root.left.right = new Node(5);
         root.right.left = new Node(6);
         root.right.right = new Node(7);
+  
 
         System.out.println("Height: " + height(root));
         System.out.println("Count: " + Count(root));
         System.out.println("Sum of Nodes: " + SumNodes(root));
         System.out.println("Diameter (O(n^2)): " + Diameter(root));
         System.out.println("Diameter (O(n)): " + diameter(root).diam);
+     System.out.print("kth level of tree (k=3): ");
+        kLevel(root, 3, 1);
+
     }
 }
